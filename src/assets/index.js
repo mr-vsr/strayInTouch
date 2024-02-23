@@ -41,6 +41,26 @@ const footerSpecialButtonStyle = {
     color: "white",
     fontWeight: "500",
 }
+const loginTypeButtonUser = {
+    textDecoration: 'none',
+    cursor: 'pointer',
+    backgroundColor: "#F2C94C",
+    color: "black",
+    padding:"8px",
+    borderRadius: "4px",
+    width: "75px",
+    fontSize:"larger"
+}
+const loginTypeButtonNgo = {
+    textDecoration: 'none',
+    cursor: 'pointer',
+    backgroundColor: "#918079",
+    color: "black",
+    padding: "8px",
+    borderRadius: "4px",
+    width: "75px",
+    fontSize: "larger"
+}
 
 
-export { styledLink, logoLinkStyle ,navbarButtonStyle, footerButtonStyle,footerSpecialButtonStyle, HeroImage,Hero1,Hero2,Hero3,Dog,DogBG,WhatWeDo, Clock,Update,Medical,Therapy,Donations}
+export { styledLink, logoLinkStyle, navbarButtonStyle, footerButtonStyle, footerSpecialButtonStyle, HeroImage, Hero1, Hero2, Hero3, Dog, DogBG, WhatWeDo, Clock, Update, Medical, Therapy, Donations, loginTypeButtonNgo, loginTypeButtonUser }

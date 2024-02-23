@@ -4,7 +4,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { LandingPage, LoginType } from './pages';
+import { LandingPage, LoginType, NgoHomePage } from './pages';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/user-page",
     element:<div>User Page</div>
+  },
+  {
+    path: "/ngo-home-page",
+    element:<NgoHomePage />
   }
 ]);
 

@@ -25,23 +25,6 @@ function HeroSection() {
     setStrayInfo({ ...strayInfo, [name]: value });
   }
 
-  // const pushData = async () => {
-  // try {
-  //   const strayRef = await addDoc(collection(db, "strayInfo"), strayInfo);
-  //   if (strayRef.id) {
-  //     setStrayInfo({
-  //       informant: "",
-  //       contact: "",
-  //       location: "",
-  //       description: "",
-  //       exactLoc: {}
-  //   });
-  //   }
-  // } catch (e) {
-  //   console.error("Error adding document: ", e);
-  //   }
-  // }
-
   const pushData = async () => {
     try {
       const requiredFields = ['informant', 'contact', 'location', 'description'];
