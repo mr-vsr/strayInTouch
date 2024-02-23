@@ -39,7 +39,7 @@ function Signup() {
           <button type='submit' className='signup-button'
           onClick={signup}>SignUp</button>
         </form>
-        <p className='login-text'>Already have an account? <Link to="/login" style={styledLink}>Login</Link></p>
+        <p className='login-text'>Already have an account? <Link to="/user-login" style={styledLink}>Login</Link></p>
         {/* <button className='login-button-signup'>Login</button> */}
       </div>
     </div>

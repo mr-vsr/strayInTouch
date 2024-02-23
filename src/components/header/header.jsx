@@ -17,7 +17,7 @@ function header() {
           </ul>
       </div>
       <div className='button-container-navbar'>
-        <Link to="/login" style={navbarButtonStyle}> Login</Link>
+        <Link to="/type-of-login" style={navbarButtonStyle}> Login</Link>
         <button className='navbar-donate-button'>Donate</button>
       </div>
       </div>

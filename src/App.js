@@ -1,10 +1,10 @@
 import './App.css';
-import { Login, Signup } from "./components/index";
+import { UserLogin, UserSignup, NgoLogin,NgoSignup } from "./components/index";
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { LandingPage } from './pages';
+import { LandingPage, LoginType } from './pages';
 
 const router = createBrowserRouter([
   {
@@ -12,12 +12,24 @@ const router = createBrowserRouter([
     element:<LandingPage />
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/type-of-login",
+    element: <LoginType />
   },
   {
-    path: "/signup",
-    element: <Signup />,
+    path: "/user-login",
+    element: <UserLogin />,
+  },
+  {
+    path: "/user-signup",
+    element: <UserSignup />,
+  },
+  {
+    path: "/ngo-login",
+    element: <NgoLogin />,
+  },
+  {
+    path: "/ngo-signup",
+    element: <NgoSignup />,
   },
   {
     path: "/user-page",

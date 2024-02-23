@@ -39,7 +39,7 @@ return (
                     <input name={password} type='password' className='password' placeholder='Password' onChange={(event) => setPassword(event.target.value)} />
                     <button type='submit' className='login-button' onClick={login}>Continue</button>
             </form>
-            <p className='signup-text'>Don't have an account? <Link to="/signup" style={styledLink}>Signup</Link></p>
+            <p className='signup-text'>Don't have an account? <Link to="/user-signup" style={styledLink}>Signup</Link></p>
         </div>
     </div>
 )
