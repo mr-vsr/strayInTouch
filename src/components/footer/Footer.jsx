@@ -1,15 +1,28 @@
 import React,{useState} from 'react';
 import { footerButtonStyle,footerSpecialButtonStyle } from '../../assets';
 import { Link } from 'react-router-dom';
+import { db } from '../../auth/firebase-congif';
+import { addDoc, collection,setDoc } from 'firebase/firestore';
 
 function Footer() {
 
-  const  [footerEmail, setFooterEmail] = useState("");
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log(footerEmail);
+  const [footerEmail, setFooterEmail] = useState("");
+  
+  const pushEmail = async (event) => {
+    try {
+      if (!footerEmail) {
+        alert("Can't send empty email");
+      } else {
+        const subscriber = await addDoc(collection(db, "subscribersEmail"), { Email: footerEmail });
+        if (subscriber.id) {
+          setFooterEmail("");
+        }
+      }
+    } catch (e) {
+      console.error("Error adding footer email: ", e);
+    }
   }
+  
   return (
     <div className='footer-container'>
       <div className='footer-left-part-container'>
@@ -45,8 +58,20 @@ function Footer() {
       </div>
       <div className='footer-email-container'>
         <h1>Subscribe to get latest updates</h1>
-        <input name={footerEmail} type='email' placeholder='your email' onChange={(e) => setFooterEmail(e.target.value)} className='footer-email-input'></input>
-        <button type='submit' onClick={handleClick} className='footer-submit-button'>Subscribe</button>
+        <input
+          name={footerEmail}
+          type='email'
+          placeholder='your email'
+          onChange={(e) => setFooterEmail(e.target.value)} className='footer-email-input'
+          value={footerEmail}
+          required
+          autoComplete='on'
+          ></input>
+        <button
+          type='submit'
+          onClick={pushEmail}
+          className='footer-submit-button'
+        >Subscribe</button>
       </div>
     </div>
   )

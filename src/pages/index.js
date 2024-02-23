@@ -1,3 +1,4 @@
-import LandingPage from "./landing-page/landing"
+import LandingPage from "./landing-page/Landing"
+import LoginType from "./type-of-login/LoginType"
 
-export {LandingPage}
+export {LandingPage,LoginType}

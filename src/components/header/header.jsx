@@ -12,12 +12,12 @@ function header() {
           <ul>
             <li className='navbar-button'><a href='#hero'>Home</a></li>
           <li className='navbar-button'><a href='#about'>About us</a></li>
-            <li className='navbar-button'><a href=''>What we do</a></li>
+            <li className='navbar-button'><a href='#what-we-do'>What we do</a></li>
             <li className='navbar-button'><a href=''>Contact</a></li>
           </ul>
       </div>
       <div className='button-container-navbar'>
-        <Link to="/login" style={navbarButtonStyle}> Login</Link>
+        <Link to="/type-of-login" style={navbarButtonStyle}> Login</Link>
         <button className='navbar-donate-button'>Donate</button>
       </div>
       </div>

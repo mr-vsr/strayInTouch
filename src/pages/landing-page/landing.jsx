@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, Footer, HeroSection, KnowAboutUs } from "../../components/index"
+import { Header, Footer, HeroSection, KnowAboutUs,WhatWedo,Donations } from "../../components/index"
 
 function landing() {
     return (
@@ -7,6 +7,8 @@ function landing() {
         <Header />
             <HeroSection />
             <KnowAboutUs />
+            <WhatWedo />
+            <Donations />
         <Footer />
     </>
 )

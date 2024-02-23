@@ -1,20 +1,78 @@
 import React,{useState,useEffect} from 'react'
-import { HeroImage, Hero1, Hero2, Hero3 } from "../../assets/index"
+import { HeroImage, Hero1, Hero2, Hero3 } from "../../assets/index";
+import { db } from "../../auth/firebase-congif";
+import { collection, addDoc } from "firebase/firestore";
+import { Form } from "../index";
+
+
+
 
 function HeroSection() {
+//object named strayInfo to store all the infor regarding a stray animal
+  const [strayInfo, setStrayInfo] = useState({
+    informant: "",
+    contact: "",
+    location: "",
+    description: "",
+    exactLoc: {}
+  })
 
-  const [informant, setInformant] = useState("");
-  const [exactLoc, setExactLoc] = useState(null);
-  const [location, setLocation] = useState("");
-  const [contact, setContact] = useState("");
-  const [description, setDescription] = useState("");
+  let name, value;
+  console.log(strayInfo);
+  const data = (e) => {
+    name = e.target.name;
+    value = e.target.value;
+    setStrayInfo({ ...strayInfo, [name]: value });
+  }
+
+  // const pushData = async () => {
+  // try {
+  //   const strayRef = await addDoc(collection(db, "strayInfo"), strayInfo);
+  //   if (strayRef.id) {
+  //     setStrayInfo({
+  //       informant: "",
+  //       contact: "",
+  //       location: "",
+  //       description: "",
+  //       exactLoc: {}
+  //   });
+  //   }
+  // } catch (e) {
+  //   console.error("Error adding document: ", e);
+  //   }
+  // }
+
+  const pushData = async () => {
+    try {
+      const requiredFields = ['informant', 'contact', 'location', 'description'];
+      const missingFields = requiredFields.filter(field => !strayInfo[field]);
+
+      if (missingFields.length === 0) {
+        const strayRef = await addDoc(collection(db, "strayInfo"), strayInfo);
+        if (strayRef.id) {
+          setStrayInfo({
+            informant: "",
+            contact: "",
+            location: "",
+            description: "",
+            exactLoc: {}
+          });
+        }
+      } else {
+        alert('Please fill in all required fields.');
+      }
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
+
 
   const handleLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setExactLoc({ latitude, longitude });
+          setStrayInfo({ ...strayInfo, "exactLoc": { latitude, longitude } });
         },
         (error) => {
           console.error('Error getting user location:', error);
@@ -28,10 +86,8 @@ function HeroSection() {
 
   useEffect(() => {
     handleLocation();
-    console.log(exactLoc)
   },[])
 
-  console.log(exactLoc)
 
   return (
     <div className='hero-section-container' id='hero'>
@@ -53,13 +109,12 @@ function HeroSection() {
           <h4 className='hero-section-bottom-cta'>STRAY IN TOUCH IF ENCOUNTERED STREET ANIMALS IN POOR STATE</h4>
         </div>
         <div className='hero-section-bottom-get-in-touch'>
-          <form className='hero-section-get-in-touch-form'>
-            <input type='text' name={informant}  onChange={(e) => setInformant(e.target.value)} className='hero-section-get-in-touch-input' placeholder='NAME'/>
-            <input type='tel' name={contact} onChange={(e) => setContact(e.target.value)} className='hero-section-get-in-touch-input' placeholder='PH NO'/>
-            <input type='text' name={location} className='hero-section-get-in-touch-input' placeholder='LOCATION' onChange={(e) => setLocation(e.target.value)} />
-            <input type='textarea' name={description} onChange={(e) => setDescription(e.target.value)} className='hero-section-get-in-touch-input special-input' placeholder='BRIEF DESCRIPTION'/>
-            <button type='submit' className='hero-section-get-in-touch-button'>Connect</button>
-          </form>
+          <div className='hero-section-bottom-get-in-touch-heading-container'><h4 className='hero-section-bottom-get-in-touch-heading'>GET CONNECTED WITH NEAREST NGO</h4></div>
+          <Form
+            pushData={pushData} 
+            strayInfo={strayInfo}
+            data={data}
+            />
         </div>
       </div>
     </div>
