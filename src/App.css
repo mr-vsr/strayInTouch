@@ -201,28 +201,36 @@ body{
   position: relative;
   display: flex;
   flex-direction: row;
+  border-radius: 5px;
 }
 .hero-section-bottom-image{
   height: 175px;
   width: 195px;
   border: none;
+  border-radius: 8px;
+}
+.hero-section-bottom-image1-container{
+  position: absolute;
+  left: 20px;
 }
 .hero-section-bottom-image2-container{
   z-index: 10;
   position: absolute;
   top: 150px;
-  left: 105px;
+  left: 145px;
 }
 .hero-section-bottom-image3-container{
   z-index: 1;
   position: absolute;
   top: 280px;
-  left: 0px;
+  left: 20px;
+  border-radius: 5px;
 }
 .hero-section-bottom-images-container{
   padding: 8px;
 }
 .hero-section-bottom-cta-container{
+  z-index: 15;
   position: absolute;
   bottom: 10px;
   left: 50px;
@@ -232,14 +240,19 @@ body{
 .hero-section-bottom-get-in-touch{
   position: absolute;
   right: 50px;
-  top: 75px;
+  top: 25px;
   width: 28vw;
-  height: 55vh;
+  height: 60vh;
   background-color: #F2C94C;
   border-radius: 8px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+
+}
+.hero-section-bottom-get-in-touch-heading-container{
+  align-items: center;
+  width: 15vw;
 }
 .hero-section-get-in-touch-form{
   display: flex;
@@ -278,11 +291,23 @@ body{
   margin: 10px  auto;
 }
 .know-about-us-bg{
-    position: absolute;
+  position: absolute;
   top: 20px;
   right: 50px;
   height: 350px;
   width: 350px;
+}
+.know-about-us-line-container{
+  position:absolute;
+  top: 35px;
+  left: 10px;
+}
+.know-about-us-line{
+  width: 40px;
+  border:1px solid black;
+}
+.know-about-us-heading{
+margin-left: 48px;
 }
 .know-about-us-image{
   position: absolute;
@@ -301,4 +326,94 @@ body{
 }
 .know-about-us-description-heading{
   width: 25vw;
+}
+
+/* What we do */
+.what-we-do-container{
+  width: 75vw;
+  height: 65vh;
+  background-color: #FCEDC6;
+  margin: 5px auto;
+  padding: 8px;
+  border-radius: 6px;
+  position: relative;
+}
+.what-we-do-image{
+  width: 450px;
+  width: 450px;
+  position: absolute;
+  bottom: 50px;
+  right: 25px;
+}
+.what-we-do-services-container{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+  margin-top: 1.5rem;
+  height: 35vh;
+  width: 25vw;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.what-we-do-description-container{
+  margin-left: 12px;
+  width: 28vw;
+}
+.what-we-do-services{
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+.what-we-do-services-image{
+  padding: 5px;
+}
+.what-we-do-services-heding{
+  padding: 8px;
+}
+
+/* Donations  */
+
+.donations-container{
+  position: relative;
+  width: 75vw;
+  height: 55vh;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 8px;
+  background-image: url("./assets/images/donations.svg");
+  background-size: cover;
+}
+.donations-cta-heading{
+  font-size: 64px;
+  position: absolute;
+  top: 0px;
+  left: 105px;
+  width: 55vw;
+  color: white;
+}
+.donations-cta-special-text{
+  color: #F2C94C;
+}
+.donations-button-container{
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  position: absolute;
+  top: 75%;
+  left: 35%;
+}
+.donations-donate-button{
+  background-color: white;
+}
+.donations-join-our-community-button{
+  background-color: #F2C94C;
+}
+.donations-button{
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 16px;
+  border: none;
 }

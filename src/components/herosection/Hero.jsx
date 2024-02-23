@@ -53,6 +53,7 @@ function HeroSection() {
           <h4 className='hero-section-bottom-cta'>STRAY IN TOUCH IF ENCOUNTERED STREET ANIMALS IN POOR STATE</h4>
         </div>
         <div className='hero-section-bottom-get-in-touch'>
+          <div className='hero-section-bottom-get-in-touch-heading-container'><h4 className='hero-section-bottom-get-in-touch-heading'>GET CONNECTED WITH NEAREST NGO</h4></div>
           <form className='hero-section-get-in-touch-form'>
             <input type='text' name={informant}  onChange={(e) => setInformant(e.target.value)} className='hero-section-get-in-touch-input' placeholder='NAME'/>
             <input type='tel' name={contact} onChange={(e) => setContact(e.target.value)} className='hero-section-get-in-touch-input' placeholder='PH NO'/>

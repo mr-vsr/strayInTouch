@@ -1,9 +1,15 @@
 import HeroImage from "./images/hero.svg";
-import Hero1 from "./images/hero1.svg";
+import Hero1 from "./images/imgDog.jpg";
 import Hero2 from "./images/hero2.svg";
-import Hero3 from "./images/hero3.svg";
+import Hero3 from "./images/imgDog2.jpg";
 import Dog from "./images/dog.svg";
 import DogBG from "./images/dog-bg.svg";
+import WhatWeDo from "./images/what-we-do.svg";
+import Therapy from "./images/therapy.svg";
+import Clock from "./images/clock.svg";
+import Update from "./images/update.svg";
+import Medical from "./images/medical.svg";
+import Donations from "./images/donations.svg";
 
 const styledLink = {
     textDecoration: 'none',
@@ -37,4 +43,4 @@ const footerSpecialButtonStyle = {
 }
 
 
-export { styledLink, logoLinkStyle ,navbarButtonStyle, footerButtonStyle,footerSpecialButtonStyle, HeroImage,Hero1,Hero2,Hero3,Dog,DogBG}
+export { styledLink, logoLinkStyle ,navbarButtonStyle, footerButtonStyle,footerSpecialButtonStyle, HeroImage,Hero1,Hero2,Hero3,Dog,DogBG,WhatWeDo, Clock,Update,Medical,Therapy,Donations}

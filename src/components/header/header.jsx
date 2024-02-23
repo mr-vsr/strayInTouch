@@ -12,7 +12,7 @@ function header() {
           <ul>
             <li className='navbar-button'><a href='#hero'>Home</a></li>
           <li className='navbar-button'><a href='#about'>About us</a></li>
-            <li className='navbar-button'><a href=''>What we do</a></li>
+            <li className='navbar-button'><a href='#what-we-do'>What we do</a></li>
             <li className='navbar-button'><a href=''>Contact</a></li>
           </ul>
       </div>
