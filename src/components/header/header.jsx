@@ -1,11 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { logoLinkStyle, navbarButtonStyle } from "../../assets/index"
-import { useSelector } from 'react-redux';
+import { logoLinkStyle, navbarButtonStyle } from "../../assets/index";
+import { signOut } from '@firebase/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { Logout } from '../../store/authSlice';
+import { auth } from '../../auth/firebase-congif';
 
 function Header() {
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const dispatch = useDispatch();
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+      dispatch(Logout());
+    } catch (error) {
+      console.log("Error in signing out : ", error);
+    }
+
+  }
+
   return (
     <div className='navbar-container'>
       <div className='logo-container'>
@@ -20,7 +36,7 @@ function Header() {
         </ul>
       </div>
       <div className='button-container-navbar'>
-        {isLoggedIn ? <h3>User</h3> : <Link to="/type-of-login" style={navbarButtonStyle}> Login</Link>}
+        {isLoggedIn ? <button className='navbar-logout-button' onClick={logout}>Logout</button> : <Link to="/type-of-login" style={navbarButtonStyle}> Login</Link>}
         <button className='navbar-donate-button'>Donate</button>
       </div>
     </div>
