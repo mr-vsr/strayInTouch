@@ -5,10 +5,11 @@ import { auth } from "../../auth/firebase-congif";
 import { Link, useNavigate } from 'react-router-dom';
 import { styledLink } from '../../assets';
 import { useDispatch } from 'react-redux';
-import { Login } from "../../store/authSlice";
+import { Login ,Logout} from "../../store/authSlice";
 
 
 function NgoLogin() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -43,11 +44,12 @@ function NgoLogin() {
         userData: user,
         isLoggedIn: true
       }));
-      navigate("/ngo-home-page")
+      navigate("/ngo-home-page");
     } else {
-      navigate("/ngo-login");
+      dispatch(Logout())
     }
   });
+
 
   return (
     <div className='container'>

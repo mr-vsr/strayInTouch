@@ -1,18 +1,20 @@
-import React from 'react';
-import { useState } from 'react';
+import React,{useState} from 'react';
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../auth/firebase-congif";
 import { Link, useNavigate } from 'react-router-dom';
 import { styledLink } from '../../assets';
 import { useDispatch } from 'react-redux';
-import { Login as LogIn } from "../../store/authSlice";
+import { Login as LogIn,Logout } from "../../store/authSlice";
 
 
 function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    // const [loading, setLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,13 +41,13 @@ function Login() {
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            dispatch(LogIn({
+            dispatch(Login({
                 userData: user,
                 isLoggedIn: true
             }));
-            navigate("/user-page")
+            navigate("/ngo-home-page");
         } else {
-            navigate("/user-login");
+            dispatch(Logout())
         }
     });
     

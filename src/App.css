@@ -109,7 +109,15 @@ body{
   border-radius: 6px;
   cursor: pointer;
 }
-
+.navbar-logout-button{
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  text-align: center;
+  font-size: larger;
+  cursor: pointer;
+}
 /* footer */
 
 .footer-container{
@@ -532,7 +540,6 @@ margin-left: 48px;
   width: 100%;
   margin-top: 7rem;
 }
-
 .card {
   margin: 0 auto;
   width: 280px;
