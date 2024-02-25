@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { footerButtonStyle,footerSpecialButtonStyle } from '../../assets';
 import { Link } from 'react-router-dom';
 import { db } from '../../auth/firebase-congif';
-import { addDoc, collection,setDoc } from 'firebase/firestore';
+import { addDoc, collection} from 'firebase/firestore';
 
 function Footer() {
 

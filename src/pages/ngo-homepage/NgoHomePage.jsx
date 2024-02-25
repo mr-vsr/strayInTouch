@@ -1,8 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Header,Footer,Donations,Hero,Savetheday } from '../../components';
 
 function NgoHomePage() {
   return (
-    <div>NgoHomePage</div>
+    <>
+      <Header />
+      <Hero />
+      <Savetheday />
+      <Donations />
+      <Footer />
+    </>
   )
 }
 

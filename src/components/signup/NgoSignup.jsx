@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../auth/firebase-congif";
-import { Link } from 'react-router-dom';
+import { auth,db } from "../../auth/firebase-congif";
+import { Link,useNavigate } from 'react-router-dom';
 import { styledLink } from '../../assets';
-import { db } from "../../auth/firebase-congif";
 import { collection, addDoc } from "firebase/firestore";
+import { useDispatch } from 'react-redux';
+import { Login } from "../../store/authSlice";
 
 function NgoSignup() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [ngoInfo, setNgoInfo] = useState({
     NgoName: "",
     email: "",
@@ -45,6 +48,13 @@ function NgoSignup() {
       .then((userCredential) => {
         const user = userCredential.user;
         pushNgoData();
+        if (user) {
+          dispatch(Login({
+            userData: user,
+            isLoggedIn: true
+          }));
+          navigate("/ngo-home-page");
+        }
         console.log(user);
       })
       .catch((error) => {

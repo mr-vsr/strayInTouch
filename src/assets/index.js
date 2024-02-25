@@ -10,6 +10,10 @@ import Clock from "./images/clock.svg";
 import Update from "./images/update.svg";
 import Medical from "./images/medical.svg";
 import Donations from "./images/donations.svg";
+import { useDispatch } from "react-redux";
+import { isSuccess } from "../store/authSlice";
+import cardsOne from "./images/cardsOne.svg";
+import cardsTwo from "./images/cardsTwo.svg";
 
 const styledLink = {
     textDecoration: 'none',
@@ -21,7 +25,7 @@ const logoLinkStyle = {
     textDecoration: 'none',
     cursor: 'pointer',
     color: "#000000",
-    fontSize:"2 rem"
+    fontSize: "2 rem"
 }
 const navbarButtonStyle = {
     textDecoration: 'none',
@@ -46,10 +50,10 @@ const loginTypeButtonUser = {
     cursor: 'pointer',
     backgroundColor: "#F2C94C",
     color: "black",
-    padding:"8px",
+    padding: "8px",
     borderRadius: "4px",
     width: "75px",
-    fontSize:"larger"
+    fontSize: "larger"
 }
 const loginTypeButtonNgo = {
     textDecoration: 'none',
@@ -63,4 +67,20 @@ const loginTypeButtonNgo = {
 }
 
 
-export { styledLink, logoLinkStyle, navbarButtonStyle, footerButtonStyle, footerSpecialButtonStyle, HeroImage, Hero1, Hero2, Hero3, Dog, DogBG, WhatWeDo, Clock, Update, Medical, Therapy, Donations, loginTypeButtonNgo, loginTypeButtonUser }
+function Success() {
+    const dispatch = useDispatch();
+    const handleClick = () => {
+        dispatch(isSuccess({
+            success: false
+        }))
+    }
+
+    return (
+        <div className="success-container">
+            <h3 className="success-heading">Thank You for reporting!</h3>
+            <button className="success-report-button" onClick={handleClick}>Report Again</button>
+        </div>
+    )
+}
+
+export { styledLink, logoLinkStyle, navbarButtonStyle, footerButtonStyle, footerSpecialButtonStyle, HeroImage, Hero1, Hero2, Hero3, Dog, DogBG, WhatWeDo, Clock, Update, Medical, Therapy, Donations, loginTypeButtonNgo, loginTypeButtonUser, Success ,cardsOne,cardsTwo}

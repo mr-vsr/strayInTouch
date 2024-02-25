@@ -1,5 +1,4 @@
 import React from 'react';
-import { Donations as Donate} from "../../assets/index";
 
 function Donations() {
 return (

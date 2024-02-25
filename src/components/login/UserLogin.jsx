@@ -1,20 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
-import {signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../auth/firebase-congif";
 import { Link, useNavigate } from 'react-router-dom';
 import { styledLink } from '../../assets';
-import { db } from "../../auth/firebase-congif";
-import { collection, addDoc } from "firebase/firestore";
+import { useDispatch } from 'react-redux';
+import { Login as LogIn } from "../../store/authSlice";
+
 
 function Login() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email, password);
     }
 
     const login = () => {
@@ -22,6 +23,10 @@ function Login() {
             .then((userCredential) => {
                 const user = userCredential.user;
                 if (user) {
+                    dispatch(LogIn({
+                        userData: user,
+                        isLoggedIn: true
+                    }));
                     navigate("/user-page")
                 }
             })
@@ -31,6 +36,18 @@ function Login() {
                 console.log(errorCode, errorMessage);
             });
     }
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            dispatch(LogIn({
+                userData: user,
+                isLoggedIn: true
+            }));
+            navigate("/user-page")
+        } else {
+            navigate("/user-login");
+        }
+    });
     
 return (
     <div className='container'>
