@@ -3,6 +3,11 @@ import { HeroImage, Hero1, Hero2, Hero3 } from "../../assets/index";
 import { db } from "../../auth/firebase-congif";
 import { collection, addDoc } from "firebase/firestore";
 import { Form } from "../index";
+import { Success } from '../../assets/index';
+import { useDispatch, useSelector } from 'react-redux';
+import { isSuccess } from "../../store/authSlice";
+
+
 
 
 
@@ -16,6 +21,7 @@ function HeroSection() {
     description: "",
     exactLoc: {}
   })
+  const dispatch = useDispatch();
 
   let name, value;
   console.log(strayInfo);
@@ -24,23 +30,6 @@ function HeroSection() {
     value = e.target.value;
     setStrayInfo({ ...strayInfo, [name]: value });
   }
-
-  // const pushData = async () => {
-  // try {
-  //   const strayRef = await addDoc(collection(db, "strayInfo"), strayInfo);
-  //   if (strayRef.id) {
-  //     setStrayInfo({
-  //       informant: "",
-  //       contact: "",
-  //       location: "",
-  //       description: "",
-  //       exactLoc: {}
-  //   });
-  //   }
-  // } catch (e) {
-  //   console.error("Error adding document: ", e);
-  //   }
-  // }
 
   const pushData = async () => {
     try {
@@ -58,6 +47,9 @@ function HeroSection() {
             exactLoc: {}
           });
         }
+        dispatch(isSuccess({
+          success: true
+        }))
       } else {
         alert('Please fill in all required fields.');
       }
@@ -66,6 +58,8 @@ function HeroSection() {
     }
   }
 
+  const success = useSelector((state) => state.auth.success);
+  
 
   const handleLocation = () => {
     if (navigator.geolocation) {
@@ -92,7 +86,7 @@ function HeroSection() {
   return (
     <div className='hero-section-container' id='hero'>
       <div className='hero-section-image-container'>
-        <img src={HeroImage} className='hero-section-image' />
+        <img src={HeroImage} className='hero-section-image' alt='hero-section'/>
       </div>
       <div className='hero-section-cta-container'>
         <h1 className='hero-section-cta'>
@@ -110,11 +104,11 @@ function HeroSection() {
         </div>
         <div className='hero-section-bottom-get-in-touch'>
           <div className='hero-section-bottom-get-in-touch-heading-container'><h4 className='hero-section-bottom-get-in-touch-heading'>GET CONNECTED WITH NEAREST NGO</h4></div>
-          <Form
-            pushData={pushData} 
+          {success ? <Success  /> : <Form
+            pushData={pushData}  
             strayInfo={strayInfo}
             data={data}
-            />
+            />}
         </div>
       </div>
     </div>

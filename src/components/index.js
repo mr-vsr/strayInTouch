@@ -11,7 +11,10 @@ import KnowAboutUs from "./herosection/KnowAboutUs.jsx";
 import WhatWedo from "./herosection/WhatWedo.jsx";
 import Donations from "./herosection/Donations.jsx";
 import Form from "./form/Form.jsx"
+import Hero from "./ngo-hero-section/Hero.jsx"
+import Savetheday from "./ngo-hero-section/Savetheday.jsx";
+import Cards from "./cards/Cards.jsx";
 
 export {
-    UserLogin, UserSignup, Header, Footer, HeroSection, KnowAboutUs, WhatWedo,Donations,Form,NgoLogin,NgoSignup
+    UserLogin, UserSignup, Header, Footer, HeroSection, KnowAboutUs, WhatWedo,Donations,Form,NgoLogin,NgoSignup,Hero,Savetheday,Cards
 };

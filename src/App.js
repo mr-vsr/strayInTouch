@@ -4,7 +4,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import { LandingPage, LoginType } from './pages';
+import { LandingPage, LoginType, NgoHomePage, UserHomePage } from './pages';
+import ProtectedRoute from "./auth/ProtectedRoute"
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/user-page",
-    element:<div>User Page</div>
+    element: <ProtectedRoute component={UserHomePage} path="/user-login" />
+  },
+  {
+    path: "/ngo-home-page",
+    element: <ProtectedRoute component={NgoHomePage} path="/ngo-login" />
   }
 ]);
 
