@@ -7,6 +7,7 @@ import {
 import { LandingPage, LoginType, NgoHomePage, UserHomePage } from './pages';
 import ProtectedRoute from "./auth/ProtectedRoute"
 
+
 const router = createBrowserRouter([
   {
     path: "/",
