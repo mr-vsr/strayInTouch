@@ -21,10 +21,10 @@ function HeroSection() {
     description: "",
     exactLoc: {}
   })
+
   const dispatch = useDispatch();
 
   let name, value;
-  console.log(strayInfo);
   const data = (e) => {
     name = e.target.name;
     value = e.target.value;
@@ -95,9 +95,9 @@ function HeroSection() {
       </div>
       <div className='hero-section-bottom'>
         <div className='hero-section-bottom-images-container'>
-          <div className='hero-section-bottom-image1-container'><img src={Hero1} className='hero-section-bottom-image' /></div>
-          <div className='hero-section-bottom-image2-container'><img src={Hero2} className='hero-section-bottom-image' /></div>
-          <div className='hero-section-bottom-image3-container'><img src={Hero3} className='hero-section-bottom-image' /></div>
+          <div className='hero-section-bottom-image1-container'><img src={Hero1} className='hero-section-bottom-image' alt="dog"/></div>
+          <div className='hero-section-bottom-image2-container'><img src={Hero2} className='hero-section-bottom-image' alt ="dog"/></div>
+          <div className='hero-section-bottom-image3-container'><img src={Hero3} className='hero-section-bottom-image' alt="dog" /></div>
         </div>
         <div className='hero-section-bottom-cta-container'>
           <h4 className='hero-section-bottom-cta'>STRAY IN TOUCH IF ENCOUNTERED STREET ANIMALS IN POOR STATE</h4>
