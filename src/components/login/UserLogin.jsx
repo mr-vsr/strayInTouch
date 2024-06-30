@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../auth/firebase-congif";
 import { Link, useNavigate } from 'react-router-dom';
@@ -39,17 +39,34 @@ function Login() {
             });
     }
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            dispatch(Login({
-                userData: user,
-                isLoggedIn: true
-            }));
-            navigate("/ngo-home-page");
-        } else {
-            dispatch(Logout())
-        }
-    });
+    // onAuthStateChanged(auth, (user) => {
+    //     if (user) {
+    //         dispatch(Login({
+    //             userData: user,
+    //             isLoggedIn: true
+    //         }));
+    //         navigate("/ngo-home-page");
+    //     } else {
+    //         dispatch(Logout())
+    //     }
+    // });
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                dispatch(LogIn({
+                    userData: user,
+                    isLoggedIn: true
+                }));
+                navigate("/user-page");
+            } else {
+                dispatch(Logout());
+            }
+        });
+
+        // Cleanup subscription on unmount
+        return () => unsubscribe();
+    }, [dispatch, navigate]);
     
 return (
     <div className='container'>

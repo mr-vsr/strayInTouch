@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import { Header, Footer, Donations, Hero} from '../../components';
 
 function UserHomepage() {
   return (
-    <div>UserHomepage</div>
+    <>
+      <Header />
+      <Hero />
+      <Donations />
+      <Footer />
+    </>
   )
 }
 
