@@ -1,10 +1,11 @@
-import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
     success: false,
     isLoggedIn: false,
-    userData:null
+    userData: null,
+    progress: false,
 }
 
 const authSlice = createSlice({
@@ -21,11 +22,12 @@ const authSlice = createSlice({
         },
         isSuccess: (state,action) => {
             state.success = action.payload.success;
+        },
+        isProgress: (state, action) => {
+            state.progress = action.payload.progress;
         }
     }
 })
 
-export const { Login, Logout, isSuccess } = authSlice.actions;
-// export const selectSuccess = (state) => state?.auth?.success;
-// export const selectLogin = (state) => state.auth.isLoggedIn;
+export const { Login, Logout, isSuccess, isProgress } = authSlice.actions;
 export default authSlice.reducer;

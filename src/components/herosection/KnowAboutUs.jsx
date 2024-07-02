@@ -17,8 +17,8 @@ function KnowAboutUs() {
                         We're on a mission to create a world where no injured animal is left without care. Through our user-friendly interface, we connect users who encounter injured animals with the nearest NGOs equipped to provide immediate assistance.</p>
                 </div>
             </div>
-            <img className='know-about-us-image' src={Dog} alt='image-dog' />
-            <img className='know-about-us-bg' src={DogBG} alt='image-bg' />
+            <img className='know-about-us-image' src={Dog} alt='' />
+            <img className='know-about-us-bg' src={DogBG} alt=''/>
         </div>
     )
 }

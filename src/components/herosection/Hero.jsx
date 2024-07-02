@@ -1,15 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import { HeroImage, Hero1, Hero2, Hero3 } from "../../assets/index";
 import { db } from "../../auth/firebase-congif";
-import { collection, addDoc } from "firebase/firestore";
+import {collection, addDoc } from "firebase/firestore";
 import { Form } from "../index";
 import { Success } from '../../assets/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { isSuccess } from "../../store/authSlice";
-
-
-
-
 
 
 function HeroSection() {

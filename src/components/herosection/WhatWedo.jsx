@@ -13,32 +13,32 @@ function WhatWedo() {
                     <div className='what-we-do-services-container'>
                         <div className='what-we-do-services'>
                             <img src={Clock} className='what-we-do-services-image' 
-                                alt='image-clock'
+                                alt=''
                             />
                             <h5 className='what-we-do-services-heading'>Quick Response</h5>
                         </div>
                         <div className='what-we-do-services'>
                             <img src={Medical} className='what-we-do-services-image' 
-                            alt='image-medical'
+                            alt=''
                             />
                             <h5 className='what-we-do-services-heading'>Medical Attention</h5>
                         </div>
                         <div className='what-we-do-services'>
                             <img src={Update} className='what-we-do-services-image'
-                            alt='image-update'
+                            alt=''
                             />
                             <h5 className='what-we-do-services-heading'>Receive Updates</h5>
                         </div>
                         <div className='what-we-do-services'>
                             <img src={Therapy} className='what-we-do-services-image' 
-                                alt='image-therapy'
+                                alt=''
                             />
                             <h5 className='what-we-do-services-heading'>Therapy</h5>
                         </div>
                     </div>
                 </div>
             </div>
-            <img src={WhatWeDo} className='what-we-do-image' alt='image-whatwedo' />
+            <img src={WhatWeDo} className='what-we-do-image' alt='' />
         </div>
     )
 }
