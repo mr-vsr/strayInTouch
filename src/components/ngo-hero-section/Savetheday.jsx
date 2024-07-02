@@ -22,7 +22,7 @@ function Savetheday() {
         fetchData();
     }, []);
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <div className='ngo-page-cards-container'>
