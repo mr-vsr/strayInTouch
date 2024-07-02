@@ -5,7 +5,6 @@ const initialState = {
     success: false,
     isLoggedIn: false,
     userData: null,
-    progress: false,
 }
 
 const authSlice = createSlice({
@@ -23,9 +22,6 @@ const authSlice = createSlice({
         isSuccess: (state,action) => {
             state.success = action.payload.success;
         },
-        isProgress: (state, action) => {
-            state.progress = action.payload.progress;
-        }
     }
 })
 

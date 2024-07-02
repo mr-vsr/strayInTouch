@@ -1,27 +1,39 @@
-import React from 'react';
-import { cardsOne, cardsTwo,Donations } from "../../assets/index";
+import React, {useState} from 'react';
+import { cardsOne } from "../../assets/index";
+import NgoCard from './NgoCard';
 
-// {
-// cardsInfo
-// }
+function Cards({ data }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const openDialog = () => {
+        setIsOpen(true);
+    };
 
-function Cards() {
-
-    const cardsInfo = [cardsOne, cardsTwo, cardsOne, cardsTwo, cardsOne, cardsTwo, cardsOne, Donations, cardsTwo];
+    const closeDialog = () => {
+        setIsOpen(false);
+    };
 
     return (
         <>
-            {cardsInfo.map(src => (
+            {data.map(src => (
                 <div
-                    key={src}
+                    key={src.id}
                     className="card"
                     style={{
-                        backgroundImage: `url(${src})`
+                        backgroundImage: `url(${cardsOne})`
                     }}
                 >
                     <div className='overlay'>
-                        <p className='ngo-page-card-text' >Hurt dog need help in kuvempu nagar in mysuru</p>
-                        <button className='ngo-page-card-help-button'>Help</button>
+                        <p className='ngo-page-card-text' >{src.description}</p>
+                        <p>{src.location}</p>
+                        <button
+                            className='ngo-page-card-help-button'
+                            onClick={openDialog}
+                        >Help</button>
+                        {isOpen && (
+                            <NgoCard
+                                closeDialog={closeDialog}
+                                dataId={src.id} />
+                        )}
                     </div>
                 </div>
             ))}

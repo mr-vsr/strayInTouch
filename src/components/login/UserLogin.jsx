@@ -14,8 +14,6 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // const [loading, setLoading] = useState(false);
-
     const handleSubmit = (e) => {
         e.preventDefault();
     }
@@ -38,18 +36,6 @@ function Login() {
                 console.log(errorCode, errorMessage);
             });
     }
-
-    // onAuthStateChanged(auth, (user) => {
-    //     if (user) {
-    //         dispatch(Login({
-    //             userData: user,
-    //             isLoggedIn: true
-    //         }));
-    //         navigate("/ngo-home-page");
-    //     } else {
-    //         dispatch(Logout())
-    //     }
-    // });
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
