@@ -3,7 +3,7 @@
 import Cards from './cards/Cards';
 import NgoCard from './cards/NgoCard';
 import UserCard from './cards/UserCard';
-import Donations from './herosection/Donations';
+import DonationsCta from './herosection/DonationsCta';
 import Footer from './footer/Footer';
 import Form from './form/Form';
 import Header from './header/Header';
@@ -22,7 +22,7 @@ export {
     Cards,
     NgoCard,
     UserCard,
-    Donations,
+    DonationsCta,
     Footer,
     Form,
     Header,

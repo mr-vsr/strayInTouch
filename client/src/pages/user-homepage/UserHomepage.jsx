@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer, Donations, UserCard } from '../../components/index.js';
+import { Header, Footer, DonationsCta, UserCard } from '../../components/index.js';
 
 
 function UserHomePage() {
@@ -9,7 +9,7 @@ function UserHomePage() {
       <div style={{"marginTop":"2rem"}}></div>
       <UserCard />
       <div style={{"marginTop":"2rem"}}></div>
-      <Donations />
+      <DonationsCta />
       <Footer />
     </>
   )

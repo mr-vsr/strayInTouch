@@ -707,7 +707,7 @@ margin-left: 48px;
     width: 75vw;
     height: 55vh;
     border-radius: 5px;
-    margin: 0 auto;
+    margin: 2rem auto;
     padding: 8px;
     display: flex;
     flex-direction: column;
@@ -740,27 +740,51 @@ margin-left: 48px;
 .donations-cta-special-text{
   color: #F2C94C;
 }
+
 .donations-button-container{
   display: flex;
   flex-direction: row;
   gap: 2rem;
   align-items: center;
-  position: absolute;
-  top: 75%;
-  left: 35%;
+  position: relative;
+  z-index: 2;
+  margin-top: 2rem;
 }
+
 .donations-donate-button{
   background-color: white;
+  color: #333;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
+
+.donations-donate-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .donations-join-our-community-button{
   background-color: #F2C94C;
-}
-.donations-button{
-  font-weight: 400;
-  cursor: pointer;
+  color: #333;
+  padding: 1rem 2rem;
   border-radius: 5px;
-  padding: 16px;
   border: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.donations-join-our-community-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.donations-button{
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 1.1rem;
 }
 
 /* Login type  */
@@ -2315,4 +2339,243 @@ margin-left: 48px;
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.3s, transform 0.3s;
+}
+
+/* NGO Homepage Styles */
+.ngo-homepage-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #F2C94C 0%, #F2994A 100%);
+}
+
+.ngo-homepage-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Updated Card Styles */
+.ngo-page-cards-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  margin-bottom: 2rem;
+}
+
+.ngo-page-cards-heading-container {
+  position: relative;
+  margin-bottom: 3rem;
+  padding: 1rem 0;
+}
+
+.ngo-page-cards-heading-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: #F2C94C;
+  transform: translateY(-50%);
+}
+
+.ngo-page-cards-heading-one {
+  position: absolute;
+  top: 0;
+  left: 85px;
+  font-size: 2.5rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.ngo-page-cards-heading-two {
+  position: absolute;
+  top: 35px;
+  left: 85px;
+  font-size: 2.5rem;
+  color: #F2C94C;
+  font-weight: 600;
+}
+
+.ngo-page-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.ngo-page-card-text {
+  color: #333;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.ngo-page-card-location {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ngo-page-card-help-button {
+  background: #F2C94C;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ngo-page-card-help-button:hover {
+  background: #F2994A;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dialog Styles */
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dialog-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.dialog-close-btn-container {
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.close {
+  font-size: 1.5rem;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.dialog-ngoName,
+.dialog-description {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.dialog-ngoName:focus,
+.dialog-description:focus {
+  outline: none;
+  border-color: #F2C94C;
+}
+
+.dialog-button {
+  background: #F2C94C;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dialog-button:hover {
+  background: #F2994A;
+}
+
+.card-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.ngo-page-card-details-button {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ngo-page-card-details-button:hover {
+  background: #444;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }

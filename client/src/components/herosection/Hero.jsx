@@ -1,89 +1,70 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { HeroImage, Hero1, Hero2, Hero3 } from "../../assets/index";
-import { db } from "../../auth/firebase-config";
-import { collection, addDoc } from "firebase/firestore";
-import { Form } from "../index";
-import { Success } from '../../assets/index';
-import { useDispatch, useSelector } from 'react-redux';
-import { isSuccess } from "../../store/authSlice";
 import { motion } from 'framer-motion';
+import Form from '../form/Form';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../auth/firebase-config';
+import { useDispatch } from 'react-redux';
+import { setSuccess } from '../../store/slices/formSlice';
 
 function HeroSection() {
-  //object named strayInfo to store all the infor regarding a stray animal
   const [strayInfo, setStrayInfo] = useState({
-    informant: "",
-    contact: "",
-    location: "",
-    description: "",
-    exactLoc: {}
-  })
+    informant: '',
+    contact: '',
+    location: '',
+    description: '',
+    image: null
+  });
 
   const dispatch = useDispatch();
 
-  let name, value;
   const data = (e) => {
-    name = e.target.name;
-    value = e.target.value;
-    setStrayInfo({ ...strayInfo, [name]: value });
-  }
-
-  const pushData = async () => {
-    try {
-      const requiredFields = ['informant', 'contact', 'location', 'description'];
-      const missingFields = requiredFields.filter(field => !strayInfo[field]);
-
-      if (missingFields.length === 0) {
-        const strayRef = await addDoc(collection(db, "strayInfo"), strayInfo);
-        if (strayRef.id) {
-          setStrayInfo({
-            informant: "",
-            contact: "",
-            location: "",
-            description: "",
-            exactLoc: {}
-          });
-        }
-        dispatch(isSuccess({
-          success: true
-        }))
-      } else {
-        alert('Please fill in all required fields.');
-      }
-    } catch (e) {
-      console.error("Error adding document: ", e);
-    }
-  }
-
-  const success = useSelector((state) => state.auth.success);
-
-
-  const handleLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setStrayInfo({ ...strayInfo, "exactLoc": { latitude, longitude } });
-        },
-        (error) => {
-          console.error('Error getting user location:', error);
-        }
-      );
-    }
-    else {
-      console.error('Geolocation is not supported by this browser.');
-    }
+    const { name, value } = e.target;
+    setStrayInfo(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  useEffect(() => {
-    handleLocation();
-  }, [])
+  const pushData = async (e) => {
+    e.preventDefault();
+    if (!strayInfo.informant || !strayInfo.contact || !strayInfo.location || !strayInfo.description) {
+      alert('Please fill all the fields');
+      return;
+    }
 
+    try {
+      await addDoc(collection(db, 'strayInfo'), {
+        ...strayInfo,
+        timestamp: new Date()
+      });
+
+      setStrayInfo({
+        informant: '',
+        contact: '',
+        location: '',
+        description: '',
+        image: null
+      });
+
+      dispatch(setSuccess(true));
+    } catch (error) {
+      console.error('Error adding document: ', error);
+    }
+  };
 
   return (
     <div className='hero-section-container' id='hero'>
       <div className='hero-section-content'>
         <div className='hero-section-image-container'>
-          <img src={HeroImage} className='hero-section-image' alt='hero-section' />
+          <motion.img
+            src={HeroImage}
+            className='hero-section-image'
+            alt='hero-section'
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          />
         </div>
         <div className='hero-section-cta-container'>
           <motion.h1
@@ -94,6 +75,12 @@ function HeroSection() {
           >
             Inclusive care for stray animals with special needs
           </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+          </motion.div>
         </div>
         <div className='hero-section-bottom'>
           <div className='hero-section-bottom-images-container'>
@@ -137,22 +124,13 @@ function HeroSection() {
           </div>
         </div>
       </div>
-      <motion.div
-        className='hero-section-form-container'
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {success ? (
-          <Success />
-        ) : (
-          <Form
-            strayInfo={strayInfo}
-            data={data}
-            pushData={pushData}
-          />
-        )}
-      </motion.div>
+      <div className='hero-section-form-container'>
+        <Form
+          data={data}
+          strayInfo={strayInfo}
+          pushData={pushData}
+        />
+      </div>
     </div>
   )
 }

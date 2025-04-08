@@ -1,15 +1,16 @@
 import React from 'react';
-import { Header,Footer,Donations,Hero,Savetheday } from '../../components/index.js';
+import { Header, Footer, DonationsCta, Savetheday } from '../../components/index.js';
 
 function NgoHomePage() {
   return (
-    <>
+    <div className='ngo-homepage-container'>
       <Header />
-      <Hero />
-      <Savetheday />
-      <Donations />
+      <div className='ngo-homepage-content'>
+        <Savetheday />
+        <DonationsCta />
+      </div>
       <Footer />
-    </>
+    </div>
   )
 }
 
