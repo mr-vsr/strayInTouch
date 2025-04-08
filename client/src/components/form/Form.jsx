@@ -26,6 +26,15 @@ function Form({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
+            <motion.h2
+                className="updated-subheading"
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+            >
+                Report a Stray Animal
+            </motion.h2>
+
             <motion.div
                 className='form-group'
                 whileHover={{ scale: 1.02 }}
@@ -35,7 +44,7 @@ function Form({
                     type='text'
                     name="informant"
                     onChange={data}
-                    className='form-input'
+                    className='form-input updated-text'
                     placeholder='Your Name'
                     value={strayInfo.informant}
                     required
@@ -51,7 +60,7 @@ function Form({
                     type='tel'
                     name="contact"
                     onChange={data}
-                    className='form-input'
+                    className='form-input updated-text'
                     placeholder='Phone Number'
                     value={strayInfo.contact}
                     required
@@ -66,7 +75,7 @@ function Form({
                 <input
                     type='text'
                     name="location"
-                    className='form-input'
+                    className='form-input updated-text'
                     placeholder='Location'
                     onChange={data}
                     value={strayInfo.location}
@@ -82,7 +91,7 @@ function Form({
                 <textarea
                     name="description"
                     onChange={data}
-                    className='form-input textarea'
+                    className='form-input textarea updated-text'
                     placeholder='Brief Description'
                     value={strayInfo.description}
                     required
@@ -90,33 +99,33 @@ function Form({
             </motion.div>
 
             <motion.div
-                className='form-group image-upload'
+                className='form-group image-upload-container'
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.2 }}
             >
                 <label className='image-upload-label'>
                     {imagePreview ? (
-                        <div className='image-preview'>
+                        <div className='image-preview-container'>
                             <img src={imagePreview} alt="Preview" />
-                            <span>Change Image</span>
+                            <span className="updated-accent-text">Change Image</span>
                         </div>
                     ) : (
-                        <div className='image-placeholder'>
-                            <span>Upload Animal Photo</span>
+                        <div className='image-upload-button'>
+                            <span className="updated-accent-text">Upload Animal Photo</span>
                         </div>
                     )}
                     <input
                         type='file'
                         accept='image/*'
                         onChange={handleImageChange}
-                        className='image-input'
+                        className='image-upload-input'
                     />
                 </label>
             </motion.div>
 
             <motion.button
                 type='submit'
-                className='form-button'
+                className='updated-button'
                 onClick={pushData}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

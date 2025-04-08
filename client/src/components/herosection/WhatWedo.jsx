@@ -1,46 +1,80 @@
 import React from 'react';
-import { WhatWeDo } from "../../assets/index";
-import { Medical, Update, Clock, Therapy } from "../../assets/index";
+import { WhatWeDo, Medical, Update, Clock, Therapy } from "../../assets/index";
+import { motion } from 'framer-motion';
 
-function WhatWedo() {
+function Whatwedo() {
+    const services = [
+        { icon: Clock, title: 'Quick Response', description: 'Immediate attention to reported cases' },
+        { icon: Medical, title: 'Medical Attention', description: 'Professional veterinary care' },
+        { icon: Update, title: 'Receive Updates', description: 'Regular status updates on rescued animals' },
+        { icon: Therapy, title: 'Therapy', description: 'Rehabilitation services for injured strays' }
+    ];
+
     return (
-        <div className='what-we-do-container' id="what-we-do">
-            <div className='what-we-do-description-container'>
-                <h2 className='what-we-do-heading'>What We Do</h2>
-                <div className='what-we-do-bottom-section-container'>
-                    <h3 className='what-we-do-subheading'>Services provided by StrayInTouch</h3>
-                    <p className='what-we-do-description'>We have partnered with NGOs among wide range in various localities to cater to the needs of stray animals</p>
-                    <div className='what-we-do-services-container'>
-                        <div className='what-we-do-services'>
-                            <img src={Clock} className='what-we-do-services-image' 
-                                alt=''
-                            />
-                            <h5 className='what-we-do-services-heading'>Quick Response</h5>
-                        </div>
-                        <div className='what-we-do-services'>
-                            <img src={Medical} className='what-we-do-services-image' 
-                            alt=''
-                            />
-                            <h5 className='what-we-do-services-heading'>Medical Attention</h5>
-                        </div>
-                        <div className='what-we-do-services'>
-                            <img src={Update} className='what-we-do-services-image'
-                            alt=''
-                            />
-                            <h5 className='what-we-do-services-heading'>Receive Updates</h5>
-                        </div>
-                        <div className='what-we-do-services'>
-                            <img src={Therapy} className='what-we-do-services-image' 
-                                alt=''
-                            />
-                            <h5 className='what-we-do-services-heading'>Therapy</h5>
-                        </div>
-                    </div>
+        <section className="what-we-do-container">
+            <div className="what-we-do-inner">
+                <motion.div
+                    className="what-we-do-header"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
+                    <h2>What We Do</h2>
+                    <p>We have partnered with NGOs across various localities to provide comprehensive care for stray animals</p>
+                </motion.div>
+
+                <div className="what-we-do-content">
+                    {/* Left Column - Service Cards */}
+                    <motion.div
+                        className="what-we-do-cards"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                    >
+                        {services.map((service, index) => (
+                            <motion.div
+                                key={service.title}
+                                className="service-card"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="service-icon">
+                                    <img
+                                        src={service.icon}
+                                        alt={service.title}
+                                        className="icon"
+                                    />
+                                </div>
+                                <div className="service-content">
+                                    <h3>{service.title}</h3>
+                                    <p>{service.description}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* Right Column - Image */}
+                    <motion.div
+                        className="what-we-do-image"
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        viewport={{ once: true }}
+                    >
+                        <img
+                            src={WhatWeDo}
+                            alt="What We Do"
+                            className="main-image"
+                        />
+                    </motion.div>
                 </div>
             </div>
-            <img src={WhatWeDo} className='what-we-do-image' alt='' />
-        </div>
-    )
+        </section>
+    );
 }
 
-export default WhatWedo
+export default Whatwedo;

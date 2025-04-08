@@ -3,7 +3,7 @@ import { Header, Footer, DonationsCta, Savetheday } from '../../components/index
 
 function NgoHomePage() {
   return (
-    <div className='ngo-homepage-container'>
+    <div className='updated-page-container'>
       <Header />
       <div className='ngo-homepage-content'>
         <Savetheday />

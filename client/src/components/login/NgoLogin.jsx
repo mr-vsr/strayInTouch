@@ -7,8 +7,9 @@ import { useDispatch } from 'react-redux';
 import { Login as LogIn, Logout } from "../../store/authSlice";
 import { motion } from 'framer-motion';
 import ErrorDialog from '../ErrorDialog';
+import { Header, Footer } from '../index';
 
-function NGOLogin() {
+function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -40,8 +41,12 @@ function NGOLogin() {
                         userData: user,
                         isLoggedIn: true
                     }));
-                    const fromDonations = location.state?.from === '/donations';
-                    navigate(fromDonations ? '/donations' : '/ngo-homepage');
+                    const fromDonations = location.state?.from === 'donations';
+                    if (fromDonations) {
+                        navigate('/donations');
+                    } else {
+                        navigate('/ngo-homepage');
+                    }
                 }
             })
             .catch((error) => {
@@ -56,8 +61,12 @@ function NGOLogin() {
                     userData: user,
                     isLoggedIn: true
                 }));
-                const fromDonations = location.state?.from === '/donations';
-                navigate(fromDonations ? '/donations' : '/ngo-homepage');
+                const fromDonations = location.state?.from === 'donations';
+                if (fromDonations) {
+                    navigate('/donations');
+                } else {
+                    navigate('/ngo-homepage');
+                }
             } else {
                 dispatch(Logout());
             }
@@ -67,84 +76,88 @@ function NGOLogin() {
     }, [dispatch, navigate, location]);
 
     return (
-        <motion.div
-            className='container'
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-        >
+        <div className="updated-page-container">
+            <Header />
             <motion.div
-                className='login-container'
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
+                className='container'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
             >
-                <motion.h2
-                    className='login-heading'
-                    initial={{ scale: 0.8 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.3 }}
+                <motion.div
+                    className='login-container updated-section'
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
                 >
-                    NGO Login
-                </motion.h2>
-                <motion.form
-                    onSubmit={handleSubmit}
-                    className='login-form-container'
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.4 }}
-                >
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.5 }}
+                    <motion.h2
+                        className='login-heading updated-heading'
+                        initial={{ scale: 0.8 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.3 }}
                     >
-                        <input
-                            type='email'
-                            className='email'
-                            placeholder='E-mail'
-                            onChange={(event) => setEmail(event.target.value)}
-                            value={email}
-                            required
-                        />
-                    </motion.div>
-                    <motion.div
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.6 }}
+                        NGO Login
+                    </motion.h2>
+                    <motion.form
+                        onSubmit={handleSubmit}
+                        className='login-form-container'
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 0.4 }}
                     >
-                        <input
-                            type='password'
-                            className='password'
-                            placeholder='Password'
-                            onChange={(event) => setPassword(event.target.value)}
-                            value={password}
-                            required
-                        />
-                    </motion.div>
-                    <motion.button
-                        type='submit'
-                        className='login-button'
-                        onClick={login}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                        >
+                            <input
+                                type='email'
+                                className='email updated-text'
+                                placeholder='E-mail'
+                                onChange={(event) => setEmail(event.target.value)}
+                                value={email}
+                                required
+                            />
+                        </motion.div>
+                        <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                        >
+                            <input
+                                type='password'
+                                className='password updated-text'
+                                placeholder='Password'
+                                onChange={(event) => setPassword(event.target.value)}
+                                value={password}
+                                required
+                            />
+                        </motion.div>
+                        <motion.button
+                            type='submit'
+                            className='login-button updated-button'
+                            onClick={login}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                        >
+                            Continue
+                        </motion.button>
+                    </motion.form>
+                    <motion.p
+                        className='signup-text updated-text'
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.7 }}
                     >
-                        Continue
-                    </motion.button>
-                </motion.form>
-                <motion.p
-                    className='signup-text'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.7 }}
-                >
-                    Don't have an account?
-                    <Link to="/ngo-signup" style={styledLink}>Signup</Link>
-                </motion.p>
+                        Don't have an account?
+                        <Link to="/ngo-signup" style={{ ...styledLink, color: '#0062ff' }}>Signup</Link>
+                    </motion.p>
+                </motion.div>
+                {error && <ErrorDialog error={error} onClose={() => setError(null)} />}
             </motion.div>
-            {error && <ErrorDialog error={error} onClose={() => setError(null)} />}
-        </motion.div>
+            <Footer />
+        </div>
     )
 }
 
-export default NGOLogin
+export default Login

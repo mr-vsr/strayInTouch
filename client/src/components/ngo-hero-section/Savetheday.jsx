@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Cards } from "../index";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../auth/firebase-config";
+import { motion } from 'framer-motion';
 
 function Savetheday() {
     const [data, setData] = useState([]);
@@ -25,16 +26,40 @@ function Savetheday() {
     // console.log(data);
 
     return (
-        <div className='ngo-page-cards-container'>
+        <motion.div
+            className='ngo-page-cards-container updated-section'
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+        >
             <div className='ngo-page-cards-heading-container'>
                 <hr className='ngo-page-cards-heading-line' />
-                <h2 className='ngo-page-cards-heading-one'>Save the Stray</h2>
-                <h2 className='ngo-page-cards-heading-two'>Save the Day</h2>
+                <motion.h2
+                    className='ngo-page-cards-heading-one updated-heading'
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                >
+                    Save the Stray
+                </motion.h2>
+                <motion.h2
+                    className='ngo-page-cards-heading-two updated-subheading'
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                >
+                    Save the Day
+                </motion.h2>
             </div>
-            <div className='ngo-page-card-container'>
+            <motion.div
+                className='ngo-page-card-container'
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+            >
                 <Cards data={data} />
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }
 

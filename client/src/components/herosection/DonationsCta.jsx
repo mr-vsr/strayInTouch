@@ -1,17 +1,67 @@
 import React from 'react';
 import { Donations as DonationsImage } from "../../assets";
+import { motion } from 'framer-motion';
 
 function Donations() {
     return (
-        <div className='donations-container'>
-            <img src={DonationsImage} alt="Donations" className='donations-image' />
-            <p className='donations-cta-heading'>Make a donation today and <span className='donations-cta-special-text'>be a hero </span> for homeless stray animals</p>
-            <div className='donations-button-container'>
-                <button className='donations-join-our-community-button donations-button'>Join Our Community</button>
-                <button className='donations-donate-button donations-button'>Donate</button>
-            </div>
-        </div>
-    )
+        <section className="donations-cta-container">
+            <motion.div
+                initial={{ scale: 1.1, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="donations-cta-background"
+            >
+                <img
+                    src={DonationsImage}
+                    alt="Donations Background"
+                />
+            </motion.div>
+
+            <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+                className="donations-cta-text-content"
+            >
+                <motion.h2
+                    initial={{ y: -20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="donations-cta-heading"
+                >
+                    Make a donation today and{' '}
+                    <span>be a hero</span>{' '}
+                    for homeless stray animals
+                </motion.h2>
+
+                <motion.div
+                    initial={{ y: 20, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                    className="donations-cta-buttons"
+                >
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="donations-cta-button primary"
+                    >
+                        Join Our Community
+                    </motion.button>
+
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="donations-cta-button secondary"
+                    >
+                        Donate
+                    </motion.button>
+                </motion.div>
+            </motion.div>
+        </section>
+    );
 }
 
-export default Donations
+export default Donations;

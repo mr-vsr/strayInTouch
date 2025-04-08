@@ -6,6 +6,7 @@ import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../auth/firebase-config';
 import { useDispatch } from 'react-redux';
 import { setSuccess } from '../../store/slices/formSlice';
+import { Link } from 'react-router-dom';
 
 function HeroSection() {
   const [strayInfo, setStrayInfo] = useState({
@@ -54,77 +55,37 @@ function HeroSection() {
   };
 
   return (
-    <div className='hero-section-container' id='hero'>
-      <div className='hero-section-content'>
-        <div className='hero-section-image-container'>
-          <motion.img
-            src={HeroImage}
-            className='hero-section-image'
-            alt='hero-section'
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          />
-        </div>
-        <div className='hero-section-cta-container'>
+    <div className="updated-page-container">
+      <motion.div
+        className="hero-section-container updated-hero-section"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.75 }}
+      >
+        <div className="hero-section-content">
           <motion.h1
-            className='hero-section-cta'
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.75 }}
+            className="updated-heading"
           >
-            Inclusive care for stray animals with special needs
+            Report stray animals in need to help them find a better home
           </motion.h1>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.75 }}
+            className="hero-section-image-container"
           >
+            <img
+              src={HeroImage}
+              alt="stray animal"
+              className="hero-section-image"
+            />
           </motion.div>
         </div>
-        <div className='hero-section-bottom'>
-          <div className='hero-section-bottom-images-container'>
-            <div className='hero-section-bottom-image1-container'>
-              <motion.img
-                src={Hero1}
-                className='hero-section-bottom-image'
-                alt="dog"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
-            </div>
-            <div className='hero-section-bottom-image2-container'>
-              <motion.img
-                src={Hero2}
-                className='hero-section-bottom-image'
-                alt="dog"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
-            </div>
-            <div className='hero-section-bottom-image3-container'>
-              <motion.img
-                src={Hero3}
-                className='hero-section-bottom-image'
-                alt="dog"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
-            </div>
-          </div>
-          <div className='hero-section-bottom-cta-container'>
-            <motion.h4
-              className='hero-section-bottom-cta'
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >
-              STRAY IN TOUCH IF ENCOUNTERED STREET ANIMALS IN POOR STATE
-            </motion.h4>
-          </div>
-        </div>
-      </div>
-      <div className='hero-section-form-container'>
+      </motion.div>
+      <div className='hero-section-form-container updated-section'>
         <Form
           data={data}
           strayInfo={strayInfo}
