@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { PageLoader } from './components/Loading';
 import PageTransition from './components/PageTransition';
-import Footer from './components/footer/Footer';
 import './App.css';
 import ProtectedRoute from "./auth/ProtectedRoute"
 import { Donations } from './pages/index';
@@ -91,7 +90,6 @@ function App() {
             </Routes>
           </AnimatePresence>
         </Suspense>
-        <Footer />
       </div>
     </Router>
   );
