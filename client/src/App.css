@@ -529,7 +529,7 @@ body{
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.1);
-    color: #333;
+    color: white;
     font-size: 0.95rem;
     transition: all 0.3s ease;
     backdrop-filter: blur(5px);
@@ -539,14 +539,14 @@ body{
 }
 
 .form-input::placeholder {
-    color: rgba(51, 51, 51, 0.6);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .form-input:focus {
     outline: none;
     border-color: #0062ff;
     box-shadow: 0 0 0 4px rgba(0, 98, 255, 0.2);
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
     transform: translateY(-2px);
 }
 
@@ -554,6 +554,14 @@ body{
     width: 100%;
     min-height: 100px;
     resize: vertical;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.form-input.textarea:focus {
+    border-color: #0062ff;
+    box-shadow: 0 0 0 4px rgba(0, 98, 255, 0.2);
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .image-upload {
@@ -3535,5 +3543,265 @@ margin-left: 48px;
 
     .donations-cta-text-content {
         padding: 1rem;
+    }
+}
+
+/* Know About Us Section */
+.know-about-us-section {
+    width: 100%;
+    background: linear-gradient(135deg, #030b1f 0%, #1a1b26 100%);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.know-about-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.know-about-us-left {
+    flex: 1;
+    max-width: 600px;
+    position: relative;
+    z-index: 2;
+}
+
+.know-about-us-line-container {
+    margin-bottom: 1rem;
+}
+
+.know-about-us-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(135deg, #0062ff 0%, #da61ff 100%);
+    border: none;
+    margin: 0;
+}
+
+.know-about-us-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.know-about-us-description {
+    position: relative;
+    z-index: 2;
+}
+
+.know-about-us-description-heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #0062ff 0%, #da61ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.4;
+}
+
+.know-about-us-description p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.know-about-us-image {
+    position: relative;
+    max-width: 450px;
+    height: auto;
+    border-radius: 20px;
+    z-index: 2;
+    box-shadow: 0 20px 40px rgba(0, 98, 255, 0.3);
+}
+
+.know-about-us-bg {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    transform: translateY(-50%);
+    width: 45%;
+    height: auto;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+@media (max-width: 1200px) {
+    .know-about-us-container {
+        padding: 0 2rem;
+    }
+
+    .know-about-us-image {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .know-about-us-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .know-about-us-left {
+        max-width: 100%;
+    }
+
+    .know-about-us-line-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .know-about-us-image {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .know-about-us-bg {
+        right: 50%;
+        transform: translate(50%, -50%);
+        width: 80%;
+        opacity: 0.05;
+    }
+}
+
+@media (max-width: 768px) {
+    .know-about-us-section {
+        padding: 4rem 1rem;
+    }
+
+    .know-about-us-container {
+        padding: 0 1rem;
+    }
+
+    .know-about-us-heading {
+        font-size: 2rem;
+    }
+
+    .know-about-us-description-heading {
+        font-size: 1.5rem;
+    }
+
+    .know-about-us-description p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .know-about-us-section {
+        padding: 3rem 1rem;
+    }
+
+    .know-about-us-image {
+        max-width: 100%;
+    }
+}
+
+/* Form Styles */
+.form-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.form-input,
+.form-input.textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    background: #f3f4f6;
+    color: #1f2937;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.form-input::placeholder,
+.form-input.textarea::placeholder {
+    color: #6b7280;
+}
+
+.form-input:hover,
+.form-input.textarea:hover {
+    background: #e5e7eb;
+    border-color: #d1d5db;
+}
+
+.form-input:focus,
+.form-input.textarea:focus {
+    outline: none;
+    border-color: #0062ff;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.form-input.textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.hero-section-form-container {
+    background: rgba(3, 11, 31, 0.95);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px 0 rgba(3, 11, 31, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.form-submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #0062ff 0%, #da61ff 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.form-submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 98, 255, 0.3);
+}
+
+.form-submit-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .hero-section-form-container {
+        padding: 1.5rem;
+        margin: 1.5rem;
+    }
+
+    .form-input,
+    .form-input.textarea {
+        font-size: 0.95rem;
     }
 }
