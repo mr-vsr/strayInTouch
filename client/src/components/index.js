@@ -1,20 +1,39 @@
 //This is the file from where all the components will be imported which are present inside the components folder
 
-import UserLogin from "./login/UserLogin.jsx";
-import UserSignup from "./signup/UserSignup.jsx";
-import NgoLogin from "./login/NgoLogin.jsx";
-import NgoSignup from "./signup/NgoSignup.jsx";
-import Header from "./header/header.jsx"
-import Footer from "./footer/Footer.jsx"
-import HeroSection from "./herosection/Hero.jsx"
-import KnowAboutUs from "./herosection/KnowAboutUs.jsx";
-import WhatWedo from "./herosection/WhatWedo.jsx";
-import Donations from "./herosection/Donations.jsx";
-import Form from "./form/Form.jsx"
-import Hero from "./ngo-hero-section/Hero.jsx"
-import Savetheday from "./ngo-hero-section/Savetheday.jsx";
-import Cards from "./cards/Cards.jsx";
+import Cards from './cards/Cards';
+import NgoCard from './cards/NgoCard';
+import UserCard from './cards/UserCard';
+import Donations from './herosection/Donations';
+import Footer from './footer/Footer';
+import Form from './form/Form';
+import Header from './header/Header';
+import Hero from './herosection/Hero';
+import KnowAboutUs from './herosection/KnowAboutUs';
+import NgoLogin from './login/NgoLogin';
+import NgoSignup from './signup/NgoSignup';
+import Savetheday from './ngo-hero-section/Savetheday';
+import UserLogin from './login/UserLogin';
+import UserSignup from './signup/UserSignup';
+import WhatWedo from './herosection/WhatWedo';
+import AdminLogin from './login/AdminLogin';
+import AdminSignup from './signup/AdminSignup';
 
 export {
-    UserLogin, UserSignup, Header, Footer, HeroSection, KnowAboutUs, WhatWedo,Donations,Form,NgoLogin,NgoSignup,Hero,Savetheday,Cards
+    Cards,
+    NgoCard,
+    UserCard,
+    Donations,
+    Footer,
+    Form,
+    Header,
+    Hero,
+    KnowAboutUs,
+    NgoLogin,
+    NgoSignup,
+    Savetheday,
+    UserLogin,
+    UserSignup,
+    WhatWedo,
+    AdminLogin,
+    AdminSignup
 };

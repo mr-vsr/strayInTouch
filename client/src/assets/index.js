@@ -14,6 +14,10 @@ import { useDispatch } from "react-redux";
 import { isSuccess } from "../store/authSlice";
 import cardsOne from "./images/cardsOne.svg";
 import cardsTwo from "./images/cardsTwo.svg";
+import Ankit from "./images/ankit-dp.jpg";
+import Akshat from "./images/akshat-dp.jpg";
+// import Sahil from "./images/sahil-dp.jpg";
+import Vikas from "./images/vikas-dp.jpg";
 
 const styledLink = {
     textDecoration: 'none',
@@ -83,4 +87,4 @@ function Success() {
     )
 }
 
-export { styledLink, logoLinkStyle, navbarButtonStyle, footerButtonStyle, footerSpecialButtonStyle, HeroImage, Hero1, Hero2, Hero3, Dog, DogBG, WhatWeDo, Clock, Update, Medical, Therapy, Donations, loginTypeButtonNgo, loginTypeButtonUser, Success ,cardsOne,cardsTwo}
+export { styledLink, logoLinkStyle, navbarButtonStyle, footerButtonStyle, footerSpecialButtonStyle, HeroImage, Hero1, Hero2, Hero3, Dog, DogBG, WhatWeDo, Clock, Update, Medical, Therapy, Donations, loginTypeButtonNgo, loginTypeButtonUser, Success ,cardsOne,cardsTwo,Ankit,Akshat,Vikas}

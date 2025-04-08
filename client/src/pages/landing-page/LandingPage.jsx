@@ -1,11 +1,11 @@
 import React from 'react'
-import { Header, Footer, HeroSection, KnowAboutUs,WhatWedo,Donations } from "../../components/index"
+import { Header, Footer,Hero,KnowAboutUs,WhatWedo,Donations } from "../../components/index.js"
 
-function landing() {
+function LandingPage() {
     return (
     <>            
         <Header />
-            <HeroSection />
+            <Hero />
             <KnowAboutUs />
             <WhatWedo />
             <Donations />
@@ -14,4 +14,4 @@ function landing() {
 )
 }
 
-export default landing
+export default LandingPage;

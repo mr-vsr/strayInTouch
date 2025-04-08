@@ -1,8 +1,8 @@
-import React, { useState} from 'react';
-import { db } from "../../auth/firebase-congif";
-import { doc, deleteDoc,collection, addDoc } from "firebase/firestore";
+import React, { useState } from 'react';
+import { db } from "../../auth/firebase-config";
+import { doc, deleteDoc, collection, addDoc } from "firebase/firestore";
 
-export default function NgoCard({ closeDialog,dataId }) {
+export default function NgoCard({ closeDialog, dataId }) {
     const [helpData, setHelpData] = useState({
         NgoName: "",
         Description: ""

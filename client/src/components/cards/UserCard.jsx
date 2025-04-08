@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { db } from "../../auth/firebase-congif";
+import { db } from "../../auth/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { HeroImage } from '../../assets';
 
-function UserCard() {
+export default function UserCard() {
     const [number, setNumber] = useState(0);
 
     useEffect(() => {
@@ -35,5 +35,3 @@ function UserCard() {
         </div>
     )
 }
-
-export default UserCard

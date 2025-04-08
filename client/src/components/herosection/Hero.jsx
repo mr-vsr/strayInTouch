@@ -1,15 +1,15 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { HeroImage, Hero1, Hero2, Hero3 } from "../../assets/index";
-import { db } from "../../auth/firebase-congif";
-import {collection, addDoc } from "firebase/firestore";
+import { db } from "../../auth/firebase-config";
+import { collection, addDoc } from "firebase/firestore";
 import { Form } from "../index";
 import { Success } from '../../assets/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { isSuccess } from "../../store/authSlice";
-
+import { motion } from 'framer-motion';
 
 function HeroSection() {
-//object named strayInfo to store all the infor regarding a stray animal
+  //object named strayInfo to store all the infor regarding a stray animal
   const [strayInfo, setStrayInfo] = useState({
     informant: "",
     contact: "",
@@ -55,7 +55,7 @@ function HeroSection() {
   }
 
   const success = useSelector((state) => state.auth.success);
-  
+
 
   const handleLocation = () => {
     if (navigator.geolocation) {
@@ -76,37 +76,83 @@ function HeroSection() {
 
   useEffect(() => {
     handleLocation();
-  },[])
+  }, [])
 
 
   return (
     <div className='hero-section-container' id='hero'>
-      <div className='hero-section-image-container'>
-        <img src={HeroImage} className='hero-section-image' alt='hero-section'/>
-      </div>
-      <div className='hero-section-cta-container'>
-        <h1 className='hero-section-cta'>
-          Inclusive care for stray animals with special needs
-        </h1>
-      </div>
-      <div className='hero-section-bottom'>
-        <div className='hero-section-bottom-images-container'>
-          <div className='hero-section-bottom-image1-container'><img src={Hero1} className='hero-section-bottom-image' alt="dog"/></div>
-          <div className='hero-section-bottom-image2-container'><img src={Hero2} className='hero-section-bottom-image' alt ="dog"/></div>
-          <div className='hero-section-bottom-image3-container'><img src={Hero3} className='hero-section-bottom-image' alt="dog" /></div>
+      <div className='hero-section-content'>
+        <div className='hero-section-image-container'>
+          <img src={HeroImage} className='hero-section-image' alt='hero-section' />
         </div>
-        <div className='hero-section-bottom-cta-container'>
-          <h4 className='hero-section-bottom-cta'>STRAY IN TOUCH IF ENCOUNTERED STREET ANIMALS IN POOR STATE</h4>
+        <div className='hero-section-cta-container'>
+          <motion.h1
+            className='hero-section-cta'
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Inclusive care for stray animals with special needs
+          </motion.h1>
         </div>
-        <div className='hero-section-bottom-get-in-touch'>
-          <div className='hero-section-bottom-get-in-touch-heading-container'><h4 className='hero-section-bottom-get-in-touch-heading'>GET CONNECTED WITH NEAREST NGO</h4></div>
-          {success ? <Success  /> : <Form
-            pushData={pushData}  
+        <div className='hero-section-bottom'>
+          <div className='hero-section-bottom-images-container'>
+            <div className='hero-section-bottom-image1-container'>
+              <motion.img
+                src={Hero1}
+                className='hero-section-bottom-image'
+                alt="dog"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+            <div className='hero-section-bottom-image2-container'>
+              <motion.img
+                src={Hero2}
+                className='hero-section-bottom-image'
+                alt="dog"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+            <div className='hero-section-bottom-image3-container'>
+              <motion.img
+                src={Hero3}
+                className='hero-section-bottom-image'
+                alt="dog"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
+            </div>
+          </div>
+          <div className='hero-section-bottom-cta-container'>
+            <motion.h4
+              className='hero-section-bottom-cta'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              STRAY IN TOUCH IF ENCOUNTERED STREET ANIMALS IN POOR STATE
+            </motion.h4>
+          </div>
+        </div>
+      </div>
+      <motion.div
+        className='hero-section-form-container'
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        {success ? (
+          <Success />
+        ) : (
+          <Form
             strayInfo={strayInfo}
             data={data}
-            />}
-        </div>
-      </div>
+            pushData={pushData}
+          />
+        )}
+      </motion.div>
     </div>
   )
 }

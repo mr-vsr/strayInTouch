@@ -7,8 +7,9 @@ import { useDispatch } from 'react-redux';
 import { Login as LogIn, Logout } from "../../store/authSlice";
 import { motion } from 'framer-motion';
 import ErrorDialog from '../ErrorDialog';
+import '../../App.css';
 
-function NGOLogin() {
+function AdminLogin() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
@@ -27,11 +28,6 @@ function NGOLogin() {
             return;
         }
 
-        if (password.length < 6) {
-            setError({ code: 'auth/weak-password' });
-            return;
-        }
-
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
@@ -41,7 +37,7 @@ function NGOLogin() {
                         isLoggedIn: true
                     }));
                     const fromDonations = location.state?.from === '/donations';
-                    navigate(fromDonations ? '/donations' : '/ngo-homepage');
+                    navigate(fromDonations ? '/donations' : '/admin-dashboard');
                 }
             })
             .catch((error) => {
@@ -57,7 +53,7 @@ function NGOLogin() {
                     isLoggedIn: true
                 }));
                 const fromDonations = location.state?.from === '/donations';
-                navigate(fromDonations ? '/donations' : '/ngo-homepage');
+                navigate(fromDonations ? '/donations' : '/admin-dashboard');
             } else {
                 dispatch(Logout());
             }
@@ -85,7 +81,7 @@ function NGOLogin() {
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.3 }}
                 >
-                    NGO Login
+                    Admin Login
                 </motion.h2>
                 <motion.form
                     onSubmit={handleSubmit}
@@ -100,6 +96,7 @@ function NGOLogin() {
                         transition={{ delay: 0.5 }}
                     >
                         <input
+                            name={email}
                             type='email'
                             className='email'
                             placeholder='E-mail'
@@ -114,6 +111,7 @@ function NGOLogin() {
                         transition={{ delay: 0.6 }}
                     >
                         <input
+                            name={password}
                             type='password'
                             className='password'
                             placeholder='Password'
@@ -139,7 +137,7 @@ function NGOLogin() {
                     transition={{ delay: 0.7 }}
                 >
                     Don't have an account?
-                    <Link to="/ngo-signup" style={styledLink}>Signup</Link>
+                    <Link to="/admin-signup" style={styledLink}>Signup</Link>
                 </motion.p>
             </motion.div>
             {error && <ErrorDialog error={error} onClose={() => setError(null)} />}
@@ -147,4 +145,4 @@ function NGOLogin() {
     )
 }
 
-export default NGOLogin
+export default AdminLogin 

@@ -1,13 +1,13 @@
 import React from 'react';
-import { Header, Footer, Donations} from '../../components';
-import UserHero from '../../components/cards/UserHero';
+import { Header, Footer, Donations, UserCard } from '../../components/index.js';
 
-function UserHomepage() {
+
+function UserHomePage() {
   return (
     <>
       <Header />
       <div style={{"marginTop":"2rem"}}></div>
-      <UserHero />
+      <UserCard />
       <div style={{"marginTop":"2rem"}}></div>
       <Donations />
       <Footer />
@@ -15,4 +15,4 @@ function UserHomepage() {
   )
 }
 
-export default UserHomepage
+export default UserHomePage

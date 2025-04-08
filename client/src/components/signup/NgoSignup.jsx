@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth,db } from "../../auth/firebase-congif";
-import { Link,useNavigate } from 'react-router-dom';
+import { auth, db } from "../../auth/firebase-config";
+import { Link, useNavigate } from 'react-router-dom';
 import { styledLink } from '../../assets';
 import { collection, addDoc } from "firebase/firestore";
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,7 @@ function NgoSignup() {
   const [ngoInfo, setNgoInfo] = useState({
     NgoName: "",
     email: "",
-    password:""
+    password: ""
   })
 
   let name, value;
@@ -32,7 +32,7 @@ function NgoSignup() {
           setNgoInfo({
             NgoName: "",
             email: "",
-            password:""
+            password: ""
           })
         }
       } else {
@@ -53,7 +53,7 @@ function NgoSignup() {
             userData: user,
             isLoggedIn: true
           }));
-          navigate("/ngo-home-page");
+          navigate("/ngo-homepage");
         }
         console.log(user);
       })
@@ -76,7 +76,7 @@ function NgoSignup() {
             onChange={data}
             value={ngoInfo.NgoName}
             required
-            />
+          />
           <input
             name="email"
             type='email'
@@ -85,16 +85,16 @@ function NgoSignup() {
             onChange={data}
             value={ngoInfo.email}
             required
-            />
+          />
           <input
             name="password"
             type='password'
             className='password'
             placeholder='Password'
-            onChange={data} 
+            onChange={data}
             value={ngoInfo.password}
             required
-            />
+          />
           <button type='submit' className='signup-button'
             onClick={signup}>SignUp</button>
         </form>

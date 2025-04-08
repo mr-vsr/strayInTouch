@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Cards } from "../index";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../auth/firebase-congif";
+import { db } from "../../auth/firebase-config";
 
 function Savetheday() {
     const [data, setData] = useState([]);

@@ -4,7 +4,7 @@ import { logoLinkStyle, navbarButtonStyle } from "../../assets/index";
 import { signOut } from '@firebase/auth';
 import { useSelector, useDispatch } from 'react-redux';
 import { Logout } from '../../store/authSlice';
-import { auth } from '../../auth/firebase-congif';
+import { auth } from '../../auth/firebase-config';
 
 function Header() {
 
@@ -29,15 +29,17 @@ function Header() {
       </div>
       <div className='navbar-buttons-container'>
         <ul>
-          <li className='navbar-button'><a href='#hero'>Home</a></li>
-          <li className='navbar-button'><a href='#about'>About us</a></li>
+          <li className='navbar-button'><Link to="/">Home</Link></li>
+          <li className='navbar-button'><Link to="/about">About</Link></li>
           <li className='navbar-button'><a href='#what-we-do'>What we do</a></li>
-          <li className='navbar-button'><a href=''>Contact</a></li>
+          <li className='navbar-button'><a href='#contact'>Contact</a></li>
         </ul>
       </div>
       <div className='button-container-navbar'>
         {isLoggedIn ? <button className='navbar-logout-button' onClick={logout}>Logout</button> : <Link to="/type-of-login" style={navbarButtonStyle}> Login</Link>}
-        <button className='navbar-donate-button'>Donate</button>
+        <Link to="/donations" className="navbar-donate-button">
+          Donate
+        </Link>
       </div>
     </div>
   )

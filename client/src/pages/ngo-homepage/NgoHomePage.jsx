@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header,Footer,Donations,Hero,Savetheday } from '../../components';
+import { Header,Footer,Donations,Hero,Savetheday } from '../../components/index.js';
 
 function NgoHomePage() {
   return (

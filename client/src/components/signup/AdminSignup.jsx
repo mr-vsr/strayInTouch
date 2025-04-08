@@ -1,70 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import React, { useState } from 'react';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../auth/firebase-config";
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { styledLink } from '../../assets';
-import { useDispatch } from 'react-redux';
-import { Login as LogIn, Logout } from "../../store/authSlice";
 import { motion } from 'framer-motion';
-import ErrorDialog from '../ErrorDialog';
+import '../../App.css';
 
-function NGOLogin() {
-    const dispatch = useDispatch();
+function AdminSignup() {
     const navigate = useNavigate();
-    const location = useLocation();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState(null);
+    const [username, setUsername] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
     }
 
-    const login = () => {
-        if (!email || !password) {
-            setError({ code: 'auth/missing-credentials' });
-            return;
-        }
-
-        if (password.length < 6) {
-            setError({ code: 'auth/weak-password' });
-            return;
-        }
-
-        signInWithEmailAndPassword(auth, email, password)
+    const signup = () => {
+        createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
                 if (user) {
-                    dispatch(LogIn({
-                        userData: user,
-                        isLoggedIn: true
-                    }));
-                    const fromDonations = location.state?.from === '/donations';
-                    navigate(fromDonations ? '/donations' : '/ngo-homepage');
+                    navigate("/admin-dashboard")
                 }
             })
             .catch((error) => {
-                setError(error);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
             });
     }
-
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                dispatch(LogIn({
-                    userData: user,
-                    isLoggedIn: true
-                }));
-                const fromDonations = location.state?.from === '/donations';
-                navigate(fromDonations ? '/donations' : '/ngo-homepage');
-            } else {
-                dispatch(Logout());
-            }
-        });
-
-        return () => unsubscribe();
-    }, [dispatch, navigate, location]);
 
     return (
         <motion.div
@@ -74,22 +39,22 @@ function NGOLogin() {
             transition={{ duration: 0.5 }}
         >
             <motion.div
-                className='login-container'
+                className='signup-container'
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
             >
                 <motion.h2
-                    className='login-heading'
+                    className='signup-heading'
                     initial={{ scale: 0.8 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.3 }}
                 >
-                    NGO Login
+                    Admin Signup
                 </motion.h2>
                 <motion.form
                     onSubmit={handleSubmit}
-                    className='login-form-container'
+                    className='signup-form-container'
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
@@ -100,6 +65,22 @@ function NGOLogin() {
                         transition={{ delay: 0.5 }}
                     >
                         <input
+                            name={username}
+                            type='text'
+                            className='username'
+                            placeholder='Username'
+                            onChange={(event) => setUsername(event.target.value)}
+                            value={username}
+                            required
+                        />
+                    </motion.div>
+                    <motion.div
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.6 }}
+                    >
+                        <input
+                            name={email}
                             type='email'
                             className='email'
                             placeholder='E-mail'
@@ -111,9 +92,10 @@ function NGOLogin() {
                     <motion.div
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.6 }}
+                        transition={{ delay: 0.7 }}
                     >
                         <input
+                            name={password}
                             type='password'
                             className='password'
                             placeholder='Password'
@@ -124,27 +106,26 @@ function NGOLogin() {
                     </motion.div>
                     <motion.button
                         type='submit'
-                        className='login-button'
-                        onClick={login}
+                        className='signup-button'
+                        onClick={signup}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        Continue
+                        Create Account
                     </motion.button>
                 </motion.form>
                 <motion.p
-                    className='signup-text'
+                    className='login-text'
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ delay: 0.7 }}
+                    transition={{ delay: 0.8 }}
                 >
-                    Don't have an account?
-                    <Link to="/ngo-signup" style={styledLink}>Signup</Link>
+                    Already have an account?
+                    <Link to="/admin-login" style={styledLink}>Login</Link>
                 </motion.p>
             </motion.div>
-            {error && <ErrorDialog error={error} onClose={() => setError(null)} />}
         </motion.div>
     )
 }
 
-export default NGOLogin
+export default AdminSignup 
